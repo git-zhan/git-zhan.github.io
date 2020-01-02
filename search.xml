@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>MySQL安装</title>
+      <link href="/2020/01/02/mysql-an-zhuang/"/>
+      <url>/2020/01/02/mysql-an-zhuang/</url>
+      
+        <content type="html"><![CDATA[<h1 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h1><h2 id="出发"><a href="#出发" class="headerlink" title="出发"></a>出发</h2><p>又到了搭建数据库环境的时候了，换了新的笔记本又要重新安装一次MySQL，然后发现自己以前安装数据库都没有总结的，所以这个时候发现还要一步步百度，坑自己呀！费了点功夫安装好了数据库，记录下来熟悉熟悉，也方便自己以后查找。</p><h2 id="安装地址"><a href="#安装地址" class="headerlink" title="安装地址"></a>安装地址</h2><ol><li>国内地址：<a href="http://mirrors.sohu.com/mysql/MySQL-8.0/" target="_blank" rel="noopener">http://mirrors.sohu.com/mysql/MySQL-8.0/</a></li><li>国外地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></li></ol><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>我是通过国内的镜像下载的，里面有msi和zip两种下载方式，我下载的是MySQL8.0.15.msi。下载完成后双击msi程序，一直往下走直到结束。</p><h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><p>安装完成后打开控制台输入mysql指令显示没有此命令，以前从来没碰到过，解决方法也很简单将MySQL下的bin文件夹路径复制添加到环境变量的path里面就好了！</p><p>解决了上面的问题后我就继续往下走，接下来就是初始化数据库了呗，命令如下：</p><pre><code>mysqld --initialize --console //初始化数据库命令mysqld -install //安装数据库mysqld -remove  //移除数据库net start mysql //启动服务net stop mysql //关闭服务mysql -u root -p  //登录数据库alter user &#39;root&#39;@&#39;localhost&#39; identified by &#39;******&#39;  //修改密码alter user &#39;root&#39;@&#39;localhost&#39; identified with mysql_native_password by &#39;******&#39;  //按8.0之前MySQL加密</code></pre><h3 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h3><p>初始化后不要急着操作，先把数据库密码记下来，用户名默认root，密码会显示在命令行上。由于我第一次初始化没有记弄丢了，还查了怎么跳过权限登录，感觉稍微麻烦一点，我就移除了服务重新安装了反正是新数据库。</p><h3 id="问题3"><a href="#问题3" class="headerlink" title="问题3"></a>问题3</h3><p>登录之后所有的指令都会让你修改密码</p><img src="/2020/01/02/mysql-an-zhuang/20010201.png" class><p>于是我就遇到了另外一个坑，我用了很多方式去修改最后发现命令根本没执行，最后排查发现语句后面<strong>没带分号</strong>,修改密码之后我就登录成功了！</p><h3 id="问题4"><a href="#问题4" class="headerlink" title="问题4"></a>问题4</h3><p>当我登录成功之后我就打开了Navicat客户端发现怎么也登录不上，搜了一下发现是MySQL8.0之后加密方式发生变化，当前Navicat不能解密，于是将密码加密方式修改为8.0之前的就行（看上面指令），也可以升级版本（我没试过)，看到的可以尝试一下，有效果可以联系下我！</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后安装成功了还是比较轻松的，好记性不如烂笔头，做IT的还是要多动手才行，虽然安装MySQL不代表什么，但是还是让我感觉这半年真的在划水过日子，加油，最后，新年快乐！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 拾遗 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CSS选择器符号1</title>
+      <link href="/2019/12/24/css-xuan-ze-qi-fu-hao-1/"/>
+      <url>/2019/12/24/css-xuan-ze-qi-fu-hao-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CSS选择器符号1"><a href="#CSS选择器符号1" class="headerlink" title="CSS选择器符号1"></a>CSS选择器符号1</h1><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>最近在写一个管理平台，毕业快半年了，关于Web方面的东西越来越感觉生疏了，果然代码这种东西就跟热恋期的男女一样，几天不见面，还以为对方要分手了，咳咳，说远了。写前端界面的时候对CSS的生疏导致进度低下，于是又捡起来，好好学了一下，现在写下这个博文，记录一下，增加点熟练度。</p><h1 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h1><p>下面这张图是从网上截下来保存的，话不多说，从第一个开始(所有例子均是从菜鸟跑的)。</p><img src="/2019/12/24/css-xuan-ze-qi-fu-hao-1/200.png" class><h2 id><a href="#" class="headerlink" title="#"></a>#</h2><p>#符号是用的最多也最常见的符号之一，一般用此符号则代表在当前页面只有一个元素符合要求，所以也被称为ID选择器，HTML，CSS代码，效果图如下：</p><pre><code>&lt;span id=&#39;span1&#39;&gt;Hello&lt;/span&gt;&lt;span&gt;World&lt;/span&gt;#span1{  background-color:yellow}</code></pre><img src="/2019/12/24/css-xuan-ze-qi-fu-hao-1/201.png" class><h2 id="-1"><a href="#-1" class="headerlink" title="."></a>.</h2><p>.（点）符号也是最常用的，主要是用于多个类型相同元素之间，一些元素由于样式一样不可能用#符号，于是用.(点)符号来选择多个相同元素。示例如下：</p><pre><code>&lt;span class=&#39;span1&#39;&gt;Hello&lt;/span&gt;&lt;span class=&#39;span1&#39;&gt;World&lt;/span&gt;.span1{  background-color:yellow}</code></pre><img src="/2019/12/24/css-xuan-ze-qi-fu-hao-1/202.png" class><h2 id="-2"><a href="#-2" class="headerlink" title=","></a>,</h2><p>(逗号)符号主要用于选择并列的元素，多个类型不同的元素需要设置相同的样式这个时候用此符号能更快满足要求。示例如下：</p><pre><code>&lt;span&gt;Hello World&lt;/span&gt;&lt;br&gt;&lt;input type=&#39;text&#39; value=&#39;Hello World&#39;&gt;span,input{  background-color:yellow}</code></pre><img src="/2019/12/24/css-xuan-ze-qi-fu-hao-1/203.png" class><h2 id="-3"><a href="#-3" class="headerlink" title="*"></a>*</h2><p>*(星)符号主要用于全局的样式设置，针对所有的元素，包括html，body。示例如下</p><pre><code>&lt;span&gt;Hello World&lt;/span&gt;&lt;br&gt;&lt;input type=&#39;text&#39; value=&#39;Hello World&#39;&gt;&lt;p&gt;  Hello World&lt;/p&gt;*{  background-color:yellow}</code></pre><img src="/2019/12/24/css-xuan-ze-qi-fu-hao-1/204.png" class><h2 id="空格符号"><a href="#空格符号" class="headerlink" title="空格符号"></a>空格符号</h2><p>空格符号主要用于选择后代中满足条件的元素，一般是跟其他符号或者元素选择器组合起来，示例如下：</p><pre><code>&lt;span class=&#39;text1&#39;&gt;Hello World&lt;/span&gt;&lt;br&gt;&lt;input type=&#39;text&#39; value=&#39;Hello World&#39;&gt;&lt;p&gt;  Hello World&lt;span class=&#39;text1&#39;&gt;Hello Css!&lt;/span&gt;&lt;/p&gt;body .text1{  background-color:yellow}</code></pre><img src="/2019/12/24/css-xuan-ze-qi-fu-hao-1/205.png" class><p>从例子上来说，空格代表从后代中选，.代表从该类中选，于是空格+.就是从从后代中选择类为text1的元素。从这里可以推导空格+*,空格+元素等，具体例子就不贴上了。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>基本的先写到这，毕竟快下班了，比较特殊一点的明天抽个时间补上，写完之后感觉果然清晰多了！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MyBlog</title>
+      <link href="/2019/12/16/myblog/"/>
+      <url>/2019/12/16/myblog/</url>
+      
+        <content type="html"><![CDATA[<h1 id="MyBlog"><a href="#MyBlog" class="headerlink" title="MyBlog"></a>MyBlog</h1><h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>刚开始是想自己手动写一个博客，由于懒癌晚期的原因一直行动不起来，直到看到一名博主的博客介绍是由<strong><code>GitHubPages+Hexo</code></strong>搭建成的，于是自己去了解了一下，不得不惊叹Hexo作者的架构设计，通过对<code>yml</code>文件的配置完成了对整个博客网站的管理，博文则是由<code>**md**</code>文件编写而来。废话不多说，我先来说下这几天的搭建流程和遇到的坑。</p><h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><ul><li>Git工具</li><li>Node.js</li></ul><h3 id="node-js中文网下载："><a href="#node-js中文网下载：" class="headerlink" title="node.js中文网下载："></a>node.js中文网下载：</h3><p><a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a></p><h3 id="git国内镜像下载"><a href="#git国内镜像下载" class="headerlink" title="git国内镜像下载:"></a>git国内镜像下载:</h3><p><a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/git-for-windows/</a></p><h3 id="git教程"><a href="#git教程" class="headerlink" title="git教程:"></a>git教程:</h3><p><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></p><h3 id="npm淘宝镜像安装命令"><a href="#npm淘宝镜像安装命令" class="headerlink" title="npm淘宝镜像安装命令:"></a>npm淘宝镜像安装命令:</h3><p>npm install -g cnpm registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p><h1 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h1><p>Node和Git的安装很简单，选择对应的版本然后一直选择默认就好了，安装好后在控制台输入以下命令查看是否安装成功。</p><pre><code>git verisonnode -vnpm -v</code></pre><p>接下来就是安装Hexo了，选择一个目录，右键选择Git Bash Here，在命令行输入命令安装Hexo,也可以查看<strong><a href="https://hexo.io/docs/" target="_blank" rel="noopener">Hexo官方文档</a></strong>。</p><pre><code>npm install -g hexo-cli</code></pre><p>安装Hexo后就可以下载Hexo的初始化模板了，命令如下:</p><pre><code>npm init MyBlogcd MyBlognpm install</code></pre><p>如果以上没有报错的话那么恭喜你可以拥有一个自己的博客了,部署命令和本地网址如下：</p><pre><code>hexo serverlocalhost:4000</code></pre><p>这是我的本地预览效果，由于后来切换了主题，所以与默认不同。</p><img src="/2019/12/16/myblog/1.png" class title="this is a test png"><p>本地搭建好，最后就是部署到Github上了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网站搭建 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
